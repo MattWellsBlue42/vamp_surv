@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d0tc3u6s2nr4j"]
+
+[ext_resource type="Texture2D" uid="uid://c3q4aotmrpvud" path="res://Assets/External/RetroPaid/StatusBar.tres" id="1_jxero"]
+[ext_resource type="Script" uid="uid://dlibmnbxlsu2t" path="res://Scripts/main_ui.gd" id="1_qdvrb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdvrb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf4gj"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer" unique_id=922157144]
+script = ExtResource("1_qdvrb")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=47590286]
+offset_right = 326.0
+offset_bottom = 152.0
+texture = ExtResource("1_jxero")
+stretch_mode = 4
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=237330922]
+offset_left = 111.0
+offset_top = 24.0
+offset_right = 314.0
+offset_bottom = 45.0
+theme_override_styles/background = SubResource("StyleBoxFlat_qdvrb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nf4gj")
+value = 100.0
+show_percentage = false

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dkuqdm0nw1lf2"]
+
+[ext_resource type="Script" uid="uid://b1aou74xwyt77" path="res://Scripts/skeleton_spawner.gd" id="1_o02yt"]
+[ext_resource type="PackedScene" uid="uid://b0kve2rpoh82g" path="res://Scenes/skeleton.tscn" id="2_q28d6"]
+
+[node name="SkeletonSpawner" type="Node" unique_id=560144156]
+script = ExtResource("1_o02yt")
+enemyPrefab = ExtResource("2_q28d6")
+
+[node name="Timer" type="Timer" parent="." unique_id=1816613592]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

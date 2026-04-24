@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://bl8k1onspya0g"]
+
+[ext_resource type="Script" uid="uid://hxxnod346ju8" path="res://Scripts/player.gd" id="1_fkybt"]
+[ext_resource type="Texture2D" uid="uid://c5uufegh0mmv6" path="res://Assets/External/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest3/v2/priest3_v2_1.png" id="1_vgqql"]
+[ext_resource type="Resource" uid="uid://dqjqllpxbjq3s" path="res://Scripts/Resources/player_stats.tres" id="2_3smsa"]
+[ext_resource type="Texture2D" uid="uid://c1wns767t6yiq" path="res://Assets/External/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest3/v2/priest3_v2_2.png" id="2_fkybt"]
+[ext_resource type="Texture2D" uid="uid://dv10l8f6iuch4" path="res://Assets/External/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest3/v2/priest3_v2_3.png" id="3_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://hr5rr1f3hgfb" path="res://Assets/External/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest3/v2/priest3_v2_4.png" id="4_3smsa"]
+[ext_resource type="FontFile" uid="uid://ckbg5o2epundw" path="res://Assets/Font/PixelOperator8.ttf" id="6_x3wgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
+atlas = ExtResource("1_vgqql")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
+atlas = ExtResource("2_fkybt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
+atlas = ExtResource("3_x3wgy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
+atlas = ExtResource("4_3smsa")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pu2lt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8erm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ek2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx1dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gymyn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
+size = Vector2(16, 15)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1164382862 groups=["player"]]
+z_index = 5
+collision_layer = 2
+script = ExtResource("1_fkybt")
+stats = ExtResource("2_3smsa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1956065243]
+sprite_frames = SubResource("SpriteFrames_pu2lt")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.76023984
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=806567499]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_vgqql")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=176602791]
+zoom = Vector2(3, 3)
+
+[node name="DEBUG" type="Label" parent="." unique_id=110098274]
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = -11.0
+theme_override_fonts/font = ExtResource("6_x3wgy")
+theme_override_font_sizes/font_size = 8
+text = "level"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=397048785]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
