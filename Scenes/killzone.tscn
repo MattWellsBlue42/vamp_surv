@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bncjr0ve8kqka"]
+
+[ext_resource type="Script" uid="uid://s43xpiit4sq1" path="res://Scripts/killzone.gd" id="1_jvagm"]
+[ext_resource type="FontFile" uid="uid://ckbg5o2epundw" path="res://Assets/Font/PixelOperator8.ttf" id="2_iyfga"]
+
+[node name="Killzone" type="Area2D" unique_id=1090608603]
+collision_mask = 2
+script = ExtResource("1_jvagm")
+
+[node name="Timer" type="Timer" parent="." unique_id=470144949]
+one_shot = true
+
+[node name="Label" type="Label" parent="." unique_id=626851423]
+offset_left = -67.0
+offset_top = -35.0
+offset_right = 67.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.67058825, 0.58431375, 1, 1)
+theme_override_fonts/font = ExtResource("2_iyfga")
+theme_override_font_sizes/font_size = 8
+text = "timer:
+canAttack:
+"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
