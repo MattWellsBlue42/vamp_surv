@@ -7,5 +7,5 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	var player := body as Player
 	if player:
-		player.increase_xp(xpAmount)
+		player.stats_component.increase_xp(xpAmount)
 		queue_free()

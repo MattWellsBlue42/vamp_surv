@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeItemInfo" format=3 uid="uid://bl11io2xyfllo"]
+
+[ext_resource type="Script" uid="uid://t0m43qyuj6dc" path="res://Scripts/upgrade_item_info.gd" id="1_v83ny"]
+[ext_resource type="Texture2D" uid="uid://pmsejc0s26wy" path="res://Assets/External/32x32.png" id="2_njdmp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxo75"]
+atlas = ExtResource("2_njdmp")
+region = Rect2(64, 1312, 32, 32)
+
+[resource]
+script = ExtResource("1_v83ny")
+sprite = SubResource("AtlasTexture_wxo75")
+upgradeName = "Max HP"
+description = "Increases your max HP."
+maxHpModifier = 1
+metadata/_custom_type_script = "uid://dbamhae06u6wn"

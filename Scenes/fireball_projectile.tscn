@@ -1,0 +1,45 @@
+[gd_scene format=4 uid="uid://c7lipu3v84udr"]
+
+[ext_resource type="Script" uid="uid://cwfhorh3u77rl" path="res://Scripts/projectile.gd" id="1_28ds4"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qr8s6"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAABmAAAAUklGRl4AAABXRUJQVlA4TFEAAAAvD8ADECdAmG00f4EhjeNepySmIbTU/xXCyAQshqQya+Oa/wD8jrGYBwWNJDVPMUBeARreAGX9m6KjIKL/EyAfFogDwMTyTNPMdGEzmBSIw2sA")
+size_override = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr8s6"]
+radius = 4.0
+
+[node name="FireballProjectile" type="CharacterBody2D" unique_id=1111198017]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_28ds4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=953132304]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_qr8s6")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Fireball.aseprite",
+"source_uid": 4133240414723122207
+}
+metadata/_aseprite_wizard_source_file_hash_ = "019853d7dab4de15c6c6c6937845a1de"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=276402064]
+shape = SubResource("CircleShape2D_qr8s6")

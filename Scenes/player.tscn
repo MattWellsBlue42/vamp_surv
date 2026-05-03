@@ -1,81 +1,86 @@
 [gd_scene format=3 uid="uid://bl8k1onspya0g"]
 
 [ext_resource type="Script" uid="uid://hxxnod346ju8" path="res://Scripts/player.gd" id="1_fkybt"]
-[ext_resource type="Texture2D" uid="uid://c5uufegh0mmv6" path="res://Assets/External/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest3/v2/priest3_v2_1.png" id="1_vgqql"]
-[ext_resource type="Resource" uid="uid://dqjqllpxbjq3s" path="res://Scripts/Resources/player_stats.tres" id="2_3smsa"]
-[ext_resource type="Texture2D" uid="uid://c1wns767t6yiq" path="res://Assets/External/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest3/v2/priest3_v2_2.png" id="2_fkybt"]
-[ext_resource type="Texture2D" uid="uid://dv10l8f6iuch4" path="res://Assets/External/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest3/v2/priest3_v2_3.png" id="3_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://hr5rr1f3hgfb" path="res://Assets/External/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest3/v2/priest3_v2_4.png" id="4_3smsa"]
-[ext_resource type="FontFile" uid="uid://ckbg5o2epundw" path="res://Assets/Font/PixelOperator8.ttf" id="6_x3wgy"]
+[ext_resource type="Resource" uid="uid://dqjqllpxbjq3s" path="res://Scripts/Resources/Player/player_stats.tres" id="2_3smsa"]
+[ext_resource type="Texture2D" uid="uid://c1013uu4kpfpn" path="res://Assets/External/kenney_tiny-dungeon/Tilemap/tilemap.png" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://ceyythibyq4eh" path="res://Scripts/Components/animation_component.gd" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://fvairbtrmvrx" path="res://Scripts/Components/input_component.gd" id="6_3smsa"]
+[ext_resource type="Script" uid="uid://c27nvrgeunhsm" path="res://Scripts/Components/movement_component.gd" id="7_3smsa"]
+[ext_resource type="Script" uid="uid://gr8yd2k6cn4y" path="res://Scripts/Components/stats_component.gd" id="8_8erm5"]
+[ext_resource type="Script" uid="uid://cyt3n1hv2a8ic" path="res://Scripts/Components/attack_component.gd" id="9_f1ek2"]
+[ext_resource type="Script" uid="uid://cg0kxy0aqhe6d" path="res://Scripts/Components/projectile_attack_component.gd" id="9_tx1dd"]
+[ext_resource type="PackedScene" uid="uid://c7lipu3v84udr" path="res://Scenes/fireball_projectile.tscn" id="10_tx1dd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
-atlas = ExtResource("1_vgqql")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
-atlas = ExtResource("2_fkybt")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
-atlas = ExtResource("3_x3wgy")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
-atlas = ExtResource("4_3smsa")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pu2lt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8erm5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f1ek2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tx1dd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gymyn")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("3_vgqql")
+region = Rect2(17, 136, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
-size = Vector2(16, 15)
+size = Vector2(12, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkybt"]
+size = Vector2(12, 15)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1164382862 groups=["player"]]
 z_index = 5
 collision_layer = 2
+collision_mask = 21
 script = ExtResource("1_fkybt")
-stats = ExtResource("2_3smsa")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1956065243]
-sprite_frames = SubResource("SpriteFrames_pu2lt")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.76023984
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1800025592]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+texture = SubResource("AtlasTexture_x3wgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=806567499]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_vgqql")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=176602791]
-zoom = Vector2(3, 3)
+[node name="MeleeSwipe" type="Area2D" parent="." unique_id=1301497445]
+collision_mask = 4
 
-[node name="DEBUG" type="Label" parent="." unique_id=110098274]
-offset_left = -20.0
-offset_top = -34.0
-offset_right = 20.0
-offset_bottom = -11.0
-theme_override_fonts/font = ExtResource("6_x3wgy")
-theme_override_font_sizes/font_size = 8
-text = "level"
-horizontal_alignment = 1
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeSwipe" unique_id=310969190]
+position = Vector2(60, 0)
+scale = Vector2(10, 1)
+shape = SubResource("RectangleShape2D_fkybt")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=176602791]
+zoom = Vector2(1.5, 1.5)
 
 [node name="Timer" type="Timer" parent="." unique_id=397048785]
+
+[node name="AnimationComponent" type="Node" parent="." unique_id=1176994352 node_paths=PackedStringArray("sprite")]
+unique_name_in_owner = true
+script = ExtResource("5_fkybt")
+sprite = NodePath("../Sprite2D")
+
+[node name="InputComponent" type="Node" parent="." unique_id=5384520]
+unique_name_in_owner = true
+script = ExtResource("6_3smsa")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1816517484 node_paths=PackedStringArray("body", "sprite")]
+unique_name_in_owner = true
+script = ExtResource("7_3smsa")
+body = NodePath("..")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://c27nvrgeunhsm"
+
+[node name="StatsComponent" type="Node" parent="." unique_id=592924133 node_paths=PackedStringArray("sprite")]
+unique_name_in_owner = true
+script = ExtResource("8_8erm5")
+stats = ExtResource("2_3smsa")
+sprite = NodePath("../Sprite2D")
+
+[node name="AttackComponent" type="Node" parent="." unique_id=38957115 node_paths=PackedStringArray("body", "meleeSwipeArea")]
+unique_name_in_owner = true
+script = ExtResource("9_f1ek2")
+body = NodePath("..")
+meleeSwipeArea = NodePath("../MeleeSwipe")
+
+[node name="ProjectileAttackComponent" type="Node" parent="." unique_id=904404011 node_paths=PackedStringArray("body")]
+unique_name_in_owner = true
+script = ExtResource("9_tx1dd")
+body = NodePath("..")
+projectile = ExtResource("10_tx1dd")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

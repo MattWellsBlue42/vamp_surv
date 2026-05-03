@@ -1,22 +1,90 @@
-[gd_scene format=3 uid="uid://x7bbsom4kh1u"]
+[gd_scene format=4 uid="uid://x7bbsom4kh1u"]
 
 [ext_resource type="Script" uid="uid://45j5vmiodddx" path="res://Scripts/coin.gd" id="1_jgi06"]
-[ext_resource type="Texture2D" uid="uid://hsljclybosmk" path="res://Assets/External/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="2_g537i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2p6v"]
 size = Vector2(10, 10)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_2qo34"]
+_data = PackedByteArray("AAADAAUAAAABAAAAMAAAACAAAAC6AAAAUklGRrIAAABXRUJQVlA4TKUAAAAvL8AHECdAmG007BlO536nIhBIUtsfajJpm/pXUEu9p2cw/wFs/2Ts4Lq2rThJ1ArSARcqAAvIcPovSpmH/4j+q23bhpGn9HLGNkAnfCKKAwCSKWQ5kaIFcIr7fS3xGrqJp9xRv6D780OH0R8nowirK8L4mMP3wtvEsDnqU6ob1f+z4f9riM9Wd+cJlRCeeK4L1IH886nDaCbqU6ob1f+z4f/jtAEA")
+size_override = Vector2(48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgi06"]
+atlas = SubResource("PortableCompressedTexture2D_2qo34")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g537i"]
+atlas = SubResource("PortableCompressedTexture2D_2qo34")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2p6v"]
+atlas = SubResource("PortableCompressedTexture2D_2qo34")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffmqm"]
+atlas = SubResource("PortableCompressedTexture2D_2qo34")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81h6x"]
+atlas = SubResource("PortableCompressedTexture2D_2qo34")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qbp07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgi06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g537i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2p6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffmqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81h6x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Coin" type="Area2D" unique_id=636845861]
 collision_mask = 2
 script = ExtResource("1_jgi06")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=599090593]
-texture = ExtResource("2_g537i")
-offset = Vector2(0, -1)
-region_enabled = true
-region_rect = Rect2(96, 128, 16, 16)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=654480653]
 shape = SubResource("RectangleShape2D_h2p6v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1173310997]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_qbp07")
+autoplay = "default"
+frame = 3
+frame_progress = 0.8868171
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": ["Outline"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Assets/Coin.aseprite",
+"source_uid": 7039786621813240800
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ebd9b7f3aec7d0b7553832a699d112b7"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,16 +1,7 @@
 extends Node
-
-var playerPrefab: PackedScene = preload("res://Scenes/player.tscn")
-@export var DEBUG_MODE := true
-
-var player: Player
-
-func spawn_player() -> void:
-	player = playerPrefab.instantiate()
-	get_parent().add_child.call_deferred(player)
+var DEBUG_MODE := true
 
 func _ready() -> void:
-	spawn_player()
 	var difficulty_timer := Timer.new()
 	difficulty_timer.wait_time = 30.0
 	difficulty_timer.timeout.connect(_on_difficulty_tick)

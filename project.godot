@@ -11,17 +11,25 @@ config_version=5
 [application]
 
 config/name="VampSurv"
-run/main_scene="uid://itdcu1gu1t30"
+run/main_scene="uid://chqpinirv3gm5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
-GameManager="*uid://cf1jo25oc7icm"
 
 [debug]
 
 gdscript/warnings/untyped_declaration=1
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
 [file_customization]
 

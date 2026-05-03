@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeItemInfo" format=3 uid="uid://b0b3tnrvwfw63"]
+
+[ext_resource type="Script" uid="uid://t0m43qyuj6dc" path="res://Scripts/upgrade_item_info.gd" id="1_00h8u"]
+[ext_resource type="Resource" uid="uid://xival3rcn4pn" path="res://Scripts/Resources/Upgrades/Effects/life_steal.tres" id="1_22d0i"]
+[ext_resource type="Texture2D" uid="uid://pmsejc0s26wy" path="res://Assets/External/32x32.png" id="2_yn0kd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22d0i"]
+atlas = ExtResource("2_yn0kd")
+region = Rect2(288, 1440, 32, 32)
+
+[resource]
+script = ExtResource("1_00h8u")
+sprite = SubResource("AtlasTexture_22d0i")
+upgradeName = "Life Steal"
+description = "Your attacks now apply life steal."
+instantEffect = ExtResource("1_22d0i")
+metadata/_custom_type_script = "uid://dbamhae06u6wn"

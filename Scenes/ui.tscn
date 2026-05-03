@@ -1,7 +1,17 @@
 [gd_scene format=3 uid="uid://d0tc3u6s2nr4j"]
 
-[ext_resource type="Texture2D" uid="uid://c3q4aotmrpvud" path="res://Assets/External/RetroPaid/StatusBar.tres" id="1_jxero"]
 [ext_resource type="Script" uid="uid://dlibmnbxlsu2t" path="res://Scripts/main_ui.gd" id="1_qdvrb"]
+[ext_resource type="FontFile" uid="uid://ckbg5o2epundw" path="res://Assets/Font/PixelOperator8.ttf" id="2_nf4gj"]
+[ext_resource type="PackedScene" uid="uid://8ceutfaxlb0a" path="res://Scenes/upgrade_ui.tscn" id="3_2246s"]
+[ext_resource type="PackedScene" uid="uid://dyvip7c8pbg6y" path="res://Scenes/level_up_overlay.tscn" id="3_nf4gj"]
+[ext_resource type="Texture2D" uid="uid://pmsejc0s26wy" path="res://Assets/External/32x32.png" id="4_q7pk6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2246s"]
+bg_color = Color(0.0437198, 0.651489, 0.8814789, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m78vo"]
+atlas = ExtResource("4_q7pk6")
+region = Rect2(192, 1440, 32, 32)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdvrb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -10,20 +20,95 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(1, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer" unique_id=922157144]
+process_mode = 3
 script = ExtResource("1_qdvrb")
+upgradePrefab = ExtResource("3_2246s")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=47590286]
-offset_right = 326.0
-offset_bottom = 152.0
-texture = ExtResource("1_jxero")
-stretch_mode = 4
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1011192475]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
 
-[node name="HealthBar" type="ProgressBar" parent="." unique_id=237330922]
-offset_left = 111.0
-offset_top = 24.0
-offset_right = 314.0
-offset_bottom = 45.0
+[node name="TimerLabel" type="Label" parent="MarginContainer" unique_id=2053334198]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_nf4gj")
+text = "2min 30sec"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=399886991]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Level" type="Label" parent="MarginContainer/VBoxContainer" unique_id=738591286]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nf4gj")
+theme_override_font_sizes/font_size = 12
+text = "Level 1"
+horizontal_alignment = 1
+
+[node name="Progress" type="Label" parent="MarginContainer/VBoxContainer" unique_id=799996171]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nf4gj")
+theme_override_font_sizes/font_size = 12
+text = "0/200"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=362545258]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_2246s")
+show_percentage = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=310100132]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Texture" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=576739761]
+layout_mode = 2
+texture = SubResource("AtlasTexture_m78vo")
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1591597805]
+layout_mode = 2
+
+[node name="UpgradesContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=99661649]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 8
+
+[node name="PlayerStatus" type="Control" parent="." unique_id=2027997082]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerStatus" unique_id=237330922]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 23.0
+offset_right = 175.0
+offset_bottom = 34.0
 theme_override_styles/background = SubResource("StyleBoxFlat_qdvrb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nf4gj")
 value = 100.0
 show_percentage = false
+
+[node name="LevelUpOverlay" parent="." unique_id=656987297 instance=ExtResource("3_nf4gj")]
+visible = false

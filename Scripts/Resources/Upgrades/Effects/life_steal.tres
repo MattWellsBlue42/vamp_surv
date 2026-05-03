@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InstantEffect" format=3 uid="uid://xival3rcn4pn"]
+
+[ext_resource type="Script" uid="uid://7d85hswc0r3q" path="res://Scripts/Resources/Upgrades/Effects/instant_effect.gd" id="1_j7yfq"]
+
+[resource]
+script = ExtResource("1_j7yfq")
+effectType = 1
+value = 0.1
+metadata/_custom_type_script = "uid://7d85hswc0r3q"

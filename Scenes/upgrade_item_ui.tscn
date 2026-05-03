@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bvejsf1faj2v4"]
+
+[ext_resource type="Script" uid="uid://b34hg2a14n4dh" path="res://Scripts/upgrade_item_ui.gd" id="1_npj1x"]
+[ext_resource type="Texture2D" uid="uid://pmsejc0s26wy" path="res://Assets/External/32x32.png" id="1_y7f66"]
+[ext_resource type="FontFile" uid="uid://ckbg5o2epundw" path="res://Assets/Font/PixelOperator8.ttf" id="2_ie6je"]
+[ext_resource type="Script" uid="uid://4t36u3l70yb5" path="res://Scripts/External/AutoSizeLabel.gd" id="4_wqvvj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie6je"]
+atlas = ExtResource("1_y7f66")
+region = Rect2(480, 4352, 32, 32)
+
+[node name="UpgradeItemUI" type="Control" unique_id=501505052]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_npj1x")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=475348771]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -97.5
+offset_right = 63.0
+offset_bottom = 97.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=332559367]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1667138650]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_ie6je")
+stretch_mode = 4
+
+[node name="ItemName" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1613910325]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ie6je")
+theme_override_font_sizes/font_size = 13
+text = "Sharpness"
+horizontal_alignment = 1
+clip_text = true
+script = ExtResource("4_wqvvj")
+min_font_size = 4
+max_font_size = 16
+metadata/_custom_type_script = "uid://4t36u3l70yb5"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=788780178]
+layout_mode = 2
+theme_override_constants/margin_top = 32
+
+[node name="ItemDesc" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=285999745]
+custom_minimum_size = Vector2(16, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ie6je")
+theme_override_font_sizes/font_size = 8
+text = "Increases attack by 5% permanently"
+horizontal_alignment = 1
+autowrap_mode = 2

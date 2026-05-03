@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UpgradeItemInfo" format=3 uid="uid://bbexvp6bku0g3"]
+
+[ext_resource type="Script" uid="uid://t0m43qyuj6dc" path="res://Scripts/upgrade_item_info.gd" id="1_d4iku"]
+[ext_resource type="Resource" uid="uid://csac1yoalp68h" path="res://Scripts/Resources/Upgrades/Effects/bleed.tres" id="1_egtyh"]
+[ext_resource type="Texture2D" uid="uid://pmsejc0s26wy" path="res://Assets/External/32x32.png" id="2_vvp33"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egtyh"]
+atlas = ExtResource("2_vvp33")
+region = Rect2(416, 1440, 32, 32)
+
+[resource]
+script = ExtResource("1_d4iku")
+sprite = SubResource("AtlasTexture_egtyh")
+upgradeName = "Bleed"
+description = "Your attacks now apply bleed."
+overtimeEffect = ExtResource("1_egtyh")
+metadata/_custom_type_script = "uid://dbamhae06u6wn"

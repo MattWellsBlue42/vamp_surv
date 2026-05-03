@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UpgradeItemInfo" format=3 uid="uid://dfgirnhtivnmd"]
+
+[ext_resource type="Script" uid="uid://dbamhae06u6wn" path="res://Scripts/upgrade_item_info.gd" id="1_egvsk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a1njj"]
+load_path = "res://.godot/imported/32x32.png-d06f6be9f36c614aa0a7149551f1370e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug1et"]
+atlas = SubResource("CompressedTexture2D_a1njj")
+region = Rect2(32, 1312, 32, 32)
+
+[resource]
+script = ExtResource("1_egvsk")
+sprite = SubResource("AtlasTexture_ug1et")
+upgradeName = "Speed Up"
+description = "Increases your speed."
+speedModifier = 0.5
+metadata/_custom_type_script = "uid://dbamhae06u6wn"

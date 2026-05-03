@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dyvip7c8pbg6y"]
+
+[ext_resource type="Script" uid="uid://dwrflcttgbcdp" path="res://Scripts/level_up_overlay.gd" id="1_iud7b"]
+[ext_resource type="FontFile" uid="uid://ckbg5o2epundw" path="res://Assets/Font/PixelOperator8.ttf" id="2_iud7b"]
+[ext_resource type="Texture2D" uid="uid://pmsejc0s26wy" path="res://Assets/External/32x32.png" id="3_5ct8d"]
+[ext_resource type="PackedScene" uid="uid://bvejsf1faj2v4" path="res://Scenes/upgrade_item_ui.tscn" id="3_k4tlo"]
+[ext_resource type="PackedScene" uid="uid://b6ba4nqkes7xh" path="res://Scenes/upgrade_item_button.tscn" id="4_5ct8d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7pk6"]
+bg_color = Color(0.004019165, 0.004019165, 0.004019165, 0.27058825)
+
+[node name="LevelUpOverlay" type="Control" unique_id=656987297]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_iud7b")
+upgradeItemScene = ExtResource("3_k4tlo")
+upgradeItemButton = ExtResource("4_5ct8d")
+spriteSheet = ExtResource("3_5ct8d")
+
+[node name="Panel" type="Panel" parent="." unique_id=242098800]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q7pk6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=913168734]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -100.0
+offset_right = 216.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=1282062580]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -375.0
+offset_top = 33.0
+offset_right = 359.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_iud7b")
+theme_override_font_sizes/font_size = 16
+text = "You leveled up to level: "
+horizontal_alignment = 1

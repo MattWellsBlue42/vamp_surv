@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UpgradeItemInfo" format=3 uid="uid://nh2xb18h04cn"]
+
+[ext_resource type="Script" uid="uid://dbamhae06u6wn" path="res://Scripts/upgrade_item_info.gd" id="1_yjwwv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bns2s"]
+load_path = "res://.godot/imported/32x32.png-d06f6be9f36c614aa0a7149551f1370e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvlmt"]
+atlas = SubResource("CompressedTexture2D_bns2s")
+region = Rect2(224, 1440, 32, 32)
+
+[resource]
+script = ExtResource("1_yjwwv")
+sprite = SubResource("AtlasTexture_gvlmt")
+upgradeName = "Sharpness"
+description = "Increases damage by 5% permanently"
+damageModifier = 0.5
+metadata/_custom_type_script = "uid://dbamhae06u6wn"

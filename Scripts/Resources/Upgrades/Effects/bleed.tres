@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OverTimeEffect" format=3 uid="uid://csac1yoalp68h"]
+
+[ext_resource type="Script" uid="uid://c6wyqyjlh1sk1" path="res://Scripts/Resources/Upgrades/Effects/over_time_effect.gd" id="1_a70kq"]
+
+[resource]
+script = ExtResource("1_a70kq")
+effectType = 2
+value = 2.0
+duration = 3.0
+tickRate = 0.5
+metadata/_custom_type_script = "uid://c6wyqyjlh1sk1"

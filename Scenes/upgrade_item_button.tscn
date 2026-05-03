@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b6ba4nqkes7xh"]
+
+[ext_resource type="Texture2D" uid="uid://cbxbig260vgqs" path="res://Assets/External/kenney_tiny-dungeon/panel-transparent-center-019.png" id="1_pore7"]
+[ext_resource type="Script" uid="uid://bs2tw5iartb4e" path="res://Scripts/upgrade_item_button.gd" id="1_q3f07"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3f07"]
+texture = ExtResource("1_pore7")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ojp8i"]
+texture = ExtResource("1_pore7")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(1, 1, 1, 0.8)
+
+[node name="Button" type="Button" unique_id=392273325]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_q3f07")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ojp8i")
+script = ExtResource("1_q3f07")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

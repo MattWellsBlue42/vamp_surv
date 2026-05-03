@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://dqjqllpxbjq3s"]
+
+[ext_resource type="Script" uid="uid://b4yyw2gewowey" path="res://Scripts/stats.gd" id="1_rb8l4"]
+
+[resource]
+script = ExtResource("1_rb8l4")
+attackRange = 40
+hp = null
+metadata/_custom_type_script = "uid://b2ffwbmfa4lm7"

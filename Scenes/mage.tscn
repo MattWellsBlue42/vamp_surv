@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://dmsadbwqta4nj"]
+
+[ext_resource type="Script" uid="uid://ds4dfn2ptdhuc" path="res://Scripts/enemy.gd" id="1_jtp6b"]
+[ext_resource type="PackedScene" uid="uid://x7bbsom4kh1u" path="res://Scenes/coin.tscn" id="2_7elky"]
+[ext_resource type="Texture2D" uid="uid://c1013uu4kpfpn" path="res://Assets/External/kenney_tiny-dungeon/Tilemap/tilemap.png" id="3_ag7jq"]
+[ext_resource type="Script" uid="uid://gr8yd2k6cn4y" path="res://Scripts/Components/stats_component.gd" id="4_rh4uj"]
+[ext_resource type="Resource" uid="uid://bvxax8ky2olfo" path="res://Scripts/Resources/Enemies/mage.tres" id="5_jtp6b"]
+[ext_resource type="Script" uid="uid://ceyythibyq4eh" path="res://Scripts/Components/animation_component.gd" id="6_0ktto"]
+[ext_resource type="Script" uid="uid://c27nvrgeunhsm" path="res://Scripts/Components/movement_component.gd" id="7_cd1ky"]
+[ext_resource type="Script" uid="uid://cg0kxy0aqhe6d" path="res://Scripts/Components/projectile_attack_component.gd" id="8_7elky"]
+[ext_resource type="Script" uid="uid://cyt3n1hv2a8ic" path="res://Scripts/Components/attack_component.gd" id="8_nsg52"]
+[ext_resource type="PackedScene" uid="uid://c7lipu3v84udr" path="res://Scenes/fireball_projectile.tscn" id="9_ag7jq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dp5w"]
+atlas = ExtResource("3_ag7jq")
+region = Rect2(51, 153, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtp6b"]
+atlas = ExtResource("3_ag7jq")
+region = Rect2(153, 170, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pegji"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_0830c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ghaa6"]
+resource_name = "death"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_pickup"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dp5w"]
+_data = {
+&"RESET": SubResource("Animation_0830c"),
+&"death": SubResource("Animation_ghaa6")
+}
+
+[node name="Mage" type="CharacterBody2D" unique_id=1615961239 groups=["enemies"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_jtp6b")
+dropsPrefab = ExtResource("2_7elky")
+rangedAttacker = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=875836325]
+texture = SubResource("AtlasTexture_1dp5w")
+
+[node name="Staff" type="Sprite2D" parent="." unique_id=121693723]
+scale = Vector2(0.75, 0.75)
+texture = SubResource("AtlasTexture_jtp6b")
+offset = Vector2(6.5, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=75303107]
+shape = SubResource("RectangleShape2D_pegji")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1542014348]
+libraries/ = SubResource("AnimationLibrary_1dp5w")
+
+[node name="Timer" type="Timer" parent="." unique_id=1802782767]
+
+[node name="StatsComponent" type="Node" parent="." unique_id=1490755121 node_paths=PackedStringArray("sprite")]
+unique_name_in_owner = true
+script = ExtResource("4_rh4uj")
+stats = ExtResource("5_jtp6b")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://gr8yd2k6cn4y"
+
+[node name="AnimationComponent" type="Node" parent="." unique_id=790970533 node_paths=PackedStringArray("sprite")]
+unique_name_in_owner = true
+script = ExtResource("6_0ktto")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://ceyythibyq4eh"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=611858630 node_paths=PackedStringArray("body", "sprite")]
+unique_name_in_owner = true
+script = ExtResource("7_cd1ky")
+body = NodePath("..")
+sprite = NodePath("../Sprite2D")
+maxDistAway = 80
+metadata/_custom_type_script = "uid://c27nvrgeunhsm"
+
+[node name="ProjectileAttackComponent" type="Node" parent="." unique_id=2084973812 node_paths=PackedStringArray("body")]
+unique_name_in_owner = true
+script = ExtResource("8_7elky")
+body = NodePath("..")
+projectile = ExtResource("9_ag7jq")
+metadata/_custom_type_script = "uid://cg0kxy0aqhe6d"
+
+[node name="AttackComponent" type="Node" parent="." unique_id=874946104]
+unique_name_in_owner = true
+script = ExtResource("8_nsg52")
+metadata/_custom_type_script = "uid://cyt3n1hv2a8ic"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

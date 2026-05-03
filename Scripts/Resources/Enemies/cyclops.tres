@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://clg8uhitutx1b"]
+
+[ext_resource type="Script" uid="uid://b4yyw2gewowey" path="res://Scripts/stats.gd" id="1_x25xb"]
+
+[resource]
+script = ExtResource("1_x25xb")
+attackRange = 25
+attackCooldown = 0.5
+attackSpeed = 20
+maxHp = 20
+hp = null
+speed = 20.0
+xpDrop = 50
+metadata/_custom_type_script = "uid://b4yyw2gewowey"
