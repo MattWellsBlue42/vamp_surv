@@ -14,11 +14,13 @@ var attackRange := 0
 var attackDamage: float = 0.0
 
 var overtimeEffects: Array[OverTimeEffect] = []
+var instantEffects: Array[InstantEffect] = []
+var stats_components: StatsComponent
 
 func attack() -> void:
 	if !ableToAttack:
 		return
-	
+
 	var collision := meleeSwipeArea.get_child(0) as CollisionShape2D
 	collision.disabled = false
 	var closestEnemy := get_nearest_enemy()
@@ -34,7 +36,7 @@ func attack() -> void:
 		var hits := body.get_world_2d().direct_space_state.intersect_shape(shape_query)
 		for hit in hits:
 			if hit.collider:
-				hit.collider.stats_component.take_damage(attackDamage, overtimeEffects)
+				hit.collider.stats_component.take_damage(attackDamage, overtimeEffects, instantEffects, stats_components)
 	collision.disabled = true
 
 #region Helpers

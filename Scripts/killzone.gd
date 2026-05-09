@@ -29,7 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 			if canAttack:
 				canAttack = false
 				timer.start(float(attackDelay))
-				player.stats_component.take_damage(damage)
+				player.stats_component.take_damage(damage, [], [])
 
 
 func _on_timer_timeout() -> void:

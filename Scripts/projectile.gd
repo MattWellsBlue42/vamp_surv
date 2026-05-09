@@ -16,5 +16,5 @@ func _physics_process(_delta: float) -> void:
 		if collider is TileMapLayer:
 			queue_free()
 		else:
-			collider.stats_component.take_damage(damage, [] as Array[OverTimeEffect])
+			collider.stats_component.take_damage(damage, [] as Array[OverTimeEffect], [] as Array[InstantEffect])
 			queue_free()

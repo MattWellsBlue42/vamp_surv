@@ -14,4 +14,3 @@ sprite = SubResource("AtlasTexture_22d0i")
 upgradeName = "Life Steal"
 description = "Your attacks now apply life steal."
 instantEffect = ExtResource("1_22d0i")
-metadata/_custom_type_script = "uid://dbamhae06u6wn"
